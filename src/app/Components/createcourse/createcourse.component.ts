@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularFireDatabase , FirebaseListObservable} from 'angularfire2/database';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-createcourse',
@@ -13,7 +14,7 @@ export class CreatecourseComponent implements OnInit {
   private ss: String = '';
   private lisUserCourse: FirebaseListObservable<any[]>;
 
-  constructor(private create:AngularFireDatabase) { 
+  constructor(private create:AngularFireDatabase , private router: Router) { 
     this.listCourse();
 
   }
@@ -26,6 +27,7 @@ export class CreatecourseComponent implements OnInit {
        this.Topic = '';
        this.Description = '';
        localStorage.setItem('CourseID',data.path.o[1]);
+       this.router.navigate(['/editCourse']);
      }).catch((err)=>{
        this.Added = 'เกิดปัญหาการเพิ่มคอสเรียน';
      });
@@ -39,6 +41,17 @@ export class CreatecourseComponent implements OnInit {
      }
     });
 
+  }
+
+  EditCourse(CourseID){
+    localStorage.setItem('CourseID',CourseID.$key);
+    this.router.navigate(['/editCourse']);
+  }
+
+  removeCourse(CourseID){
+    this.create.object(`/Course/${CourseID.$key}`).remove()
+     .then(()=>console.log('ลบเรียบร้อย'))
+     .catch(()=> console.log('เกิดปัญหา'));
   }
 
   ngOnInit() {
