@@ -17,6 +17,7 @@ import { AboutmeComponent } from './Components/aboutme/aboutme.component';
 import { MainpageComponent } from './Components/mainpage/mainpage.component';
 import { CreatecourseComponent } from './Components/createcourse/createcourse.component';
 import { EditCourseComponent } from './Components/edit-course/edit-course.component';
+import { CourseQuestionComponent } from './Components/course-question/course-question.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EditCourseComponent } from './Components/edit-course/edit-course.compon
     AboutmeComponent,
     MainpageComponent,
     CreatecourseComponent,
-    EditCourseComponent
+    EditCourseComponent,
+    CourseQuestionComponent,
   ],
   imports: [
     BrowserModule,
