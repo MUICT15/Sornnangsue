@@ -9,10 +9,10 @@ import {CKEditorComponent} from 'ng2-ckeditor';
   styleUrls: ['./edit-course.component.css']
 })
 export class EditCourseComponent implements OnInit {
-   private Topic: String = '';
-   private Description: String = '';
-   private Article: String;
-   private content: String = '';
+   Topic: String = '';
+   Description: String = '';
+   Article: String;
+   content: String = '';
   constructor(private edit: AngularFireDatabase , private router: Router) { 
       if(localStorage.getItem('CourseID') != null){
           edit.list('/Course',{
@@ -45,5 +45,4 @@ export class EditCourseComponent implements OnInit {
   }
   ngOnInit() {
   }
-
 }
