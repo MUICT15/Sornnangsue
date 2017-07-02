@@ -8,11 +8,11 @@ import {Router} from '@angular/router';
   styleUrls: ['./createcourse.component.css']
 })
 export class CreatecourseComponent implements OnInit {
-  private Topic: String = '';
-  private Description:String = '';
-  private Added: String = '';
-  private ss: String = '';
-  private lisUserCourse: FirebaseListObservable<any[]>;
+  Topic: String = '';
+  Description:String = '';
+  Added: String = '';
+  ss: String = '';
+  lisUserCourse: FirebaseListObservable<any[]>;
 
   constructor(private create:AngularFireDatabase , private router: Router) { 
     this.listCourse();
