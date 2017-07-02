@@ -8,19 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./course-question.component.css']
 })
 export class CourseQuestionComponent implements OnInit {
-  private listBeforQuestions: FirebaseListObservable<any[]>;
-  private beforeDetailQuestion: String = '';
-  private beforeAns1: String = '';
-  private beforeAns2: String = '';
-  private beforeAns3: String = '';
-  private beforeAns4: String = '';
+  listBeforQuestions: FirebaseListObservable<any[]>;
+  beforeDetailQuestion: String = '';
+  beforeAns1: String = '';
+  beforeAns2: String = '';
+  beforeAns3: String = '';
+  beforeAns4: String = '';
+  beforeAnsCorrect: String = '';
+  beforeAdded: String = '';
   
-  private listAfterQuestions: FirebaseListObservable<any[]>;
-  private afterDetailQuestion: String = '';
-  private afterAns1: String = '';
-  private afterAns2: String = '';
-  private afterAns3: String = '';
-  private afterAns4: String = '';
+  listAfterQuestions: FirebaseListObservable<any[]>;
+  afterDetailQuestion: String = '';
+  afterAns1: String = '';
+  afterAns2: String = '';
+  afterAns3: String = '';
+  afterAns4: String = '';
+  afterAnsCorrect: String = '';
+  afterAdded: String = '';
 
   constructor(private question: AngularFireDatabase,private router: Router) {
      this.listAfterQuestion();
@@ -50,31 +54,50 @@ export class CourseQuestionComponent implements OnInit {
 
    addBeforeQuestion(){
      this.question.list('/BeforeQuestion').push({
-       CourseID: localStorage.getItem('CourseID'),
+       CourseKey: localStorage.getItem('CourseID'),
        DetailQuestion: this.beforeDetailQuestion,
        Ans1: this.beforeAns1,
        Ans2: this.beforeAns2,
        Ans3: this.beforeAns3,
-       Ans4: this.beforeAns4
+       Ans4: this.beforeAns4,
+       AnsCorrect: this.beforeAnsCorrect
      }).then((data)=>{
        console.log('เพิ่มเรียบร้อย');
+       this.beforeDetailQuestion = '';
+       this.beforeAns1 = '';
+       this.beforeAns2 = '';
+       this.beforeAns3 = '';
+       this.beforeAns4 = '';
+       this.beforeAnsCorrect  = '';
+       this.beforeAdded = 'เพิ่มข้อสอบก่อนเรียนเรียบร้อย';
      }).catch((err)=>{
        console.log(err);
+       this.afterAdded= 'เกิดปัญหาในการเพิ่มข้อสอบ';
      });
      
    }
    
    addAfterQuestion(){
      this.question.list('/AfterQuestion').push({
-       CourseID: localStorage.getItem('CourseID'),
+       CourseKey: localStorage.getItem('CourseID'),
        DetailQuestion: this.afterDetailQuestion,
        Ans1: this.afterAns1,
        Ans2: this.afterAns2,
        Ans3: this.afterAns3,
-       Ans4: this.afterAns4
+       Ans4: this.afterAns4,
+       AnsCorrect: this.afterAnsCorrect
      }).then((data)=>{
        console.log('เพิ่มเรียบร้อย');
+       this.afterDetailQuestion = '';
+       this.afterAns1 = '';
+       this.afterAns2 = '';
+       this.afterAns3 = '';
+       this.afterAns4 = '';
+       this.afterAnsCorrect = '';
+       this.afterAdded = 'เพิ่มข้อสอบก่อนเรียนเรียบร้อย';
+
      }).catch((err)=>{
+       this.afterAdded = 'เพิ่มข้อสอบก่อนเรียนเรียบร้อย';
        console.log(err);
      });
 
