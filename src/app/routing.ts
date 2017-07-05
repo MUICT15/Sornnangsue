@@ -8,6 +8,7 @@ import { ListCourseComponent } from './Components/list-course/list-course.compon
 import { EditCourseComponent } from './Components/edit-course/edit-course.component';
 import { AnsBeforeQuestionComponent } from './Components/ans-before-question/ans-before-question.component';
 import { AnsAfterQuestionComponent } from './Components/ans-after-question/ans-after-question.component';
+import { UserProfileComponent } from './Components/user-profile/user-profile.component';
 
 export const route: Routes = [
     {path: '' , component: MainpageComponent},
@@ -17,6 +18,7 @@ export const route: Routes = [
     {path: 'courseContent/:CourseID',component: CourseContentComponent},
     {path: 'listcourse',component: ListCourseComponent},
     {path: 'examBefore/:CourseID',component: AnsBeforeQuestionComponent},
-    {path: 'examAfter/:CourseID', component: AnsAfterQuestionComponent}
+    {path: 'examAfter/:CourseID', component: AnsAfterQuestionComponent},
+    {path: 'myProfile' , component: UserProfileComponent}
     ];
 export const routing = RouterModule.forRoot(route);
