@@ -12,6 +12,7 @@ export class CreatecourseComponent implements OnInit {
   Description:String = '';
   Added: String = '';
   ss: String = '';
+  Image: String = '';
   lisUserCourse: FirebaseListObservable<any[]>;
 
   constructor(private create:AngularFireDatabase , private router: Router) { 
@@ -22,11 +23,18 @@ export class CreatecourseComponent implements OnInit {
      this.create.list('/Course').push({
        UserID: localStorage.getItem('UID'),
        Topic: this.Topic,
-       Description: this.Description
+       Description: this.Description,
+       Image: this.Image
      }).then((data)=>{
        this.Topic = '';
        this.Description = '';
        localStorage.setItem('CourseID',data.path.o[1]);
+       this.create.list('/Course',{
+         query:{
+           orderByKey: true,
+           equalTo: data.path.o[1]
+         }
+       }).update(data.path.o[1],{Key:data.path.o[1]});
        this.router.navigate(['/editCourse']);
      }).catch((err)=>{
        this.Added = 'เกิดปัญหาการเพิ่มคอสเรียน';

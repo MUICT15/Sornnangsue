@@ -18,6 +18,10 @@ import { MainpageComponent } from './Components/mainpage/mainpage.component';
 import { CreatecourseComponent } from './Components/createcourse/createcourse.component';
 import { EditCourseComponent } from './Components/edit-course/edit-course.component';
 import { CourseQuestionComponent } from './Components/course-question/course-question.component';
+import { CourseContentComponent } from './Components/course-content/course-content.component';
+import { ListCourseComponent } from './Components/list-course/list-course.component';
+import { AnsAfterQuestionComponent } from './Components/ans-after-question/ans-after-question.component';
+import { AnsBeforeQuestionComponent } from './Components/ans-before-question/ans-before-question.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +32,10 @@ import { CourseQuestionComponent } from './Components/course-question/course-que
     CreatecourseComponent,
     EditCourseComponent,
     CourseQuestionComponent,
+    CourseContentComponent,
+    ListCourseComponent,
+    AnsAfterQuestionComponent,
+    AnsBeforeQuestionComponent
   ],
   imports: [
     BrowserModule,

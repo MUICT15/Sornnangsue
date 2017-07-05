@@ -8,8 +8,13 @@
       </button>
       <a class="navbar-brand" href="#">ครูไก่</a>
     </div>
-    <div *ngIf="(User | async)" class="collapse navbar-collapse" id="myNavbar">
+    <div *ngIf="adminNav" class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a [routerLink]="['/listcourse']">
+            <h5>คอสเรียน</h5>
+          </a>
+        </li>
         <li>
           <a [routerLink]="['/createCourse']">
             <h5>สร้างบทเรียน</h5>
@@ -17,7 +22,7 @@
         </li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <img class="img-circle " [src]="(User | async)?.photoURL">
+            <img class="img-circle " [src]="UserPhoto">
             <span class="caret"></span>
           </a>
          <ul class="dropdown-menu">
@@ -30,7 +35,29 @@
         </li>
       </ul>
     </div>
-    <div *ngIf="!(User | async)" class="collapse navbar-collapse" id="myNavbar">
+    <div *ngIf="UserNav" class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a [routerLink]="['/listcourse']">
+            <h5>คอสเรียน</h5>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <img class="img-circle " [src]="UserPhoto">
+            <span class="caret"></span>
+          </a>
+         <ul class="dropdown-menu">
+          <li>
+            <a href="#" (click)="logout()">
+              <span class="glyphicon glyphicon-log-in"></span> ออกจากระบบ
+            </a>
+          </li>
+         </ul>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="UserUID == ''" class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right" #unAuth>
         <li><a href="#" data-toggle="modal" data-target="#Authen">
           <span class="glyphicon glyphicon-log-in"></span> เข้าสู่ระบบ</a></li>
