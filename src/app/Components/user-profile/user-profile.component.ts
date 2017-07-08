@@ -25,7 +25,7 @@ export class UserProfileComponent implements OnInit {
      }
    }).subscribe((data)=>{
      if(data.length != 0){
-        this.realName = data[0].realName;
+        this.realName = data[0].RealName;
         this.grade = data[0].Grade;
         this.firebaseKey = data[0].$key;
      }

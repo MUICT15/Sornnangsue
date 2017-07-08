@@ -6,3 +6,9 @@
     padding: 50px 30px 50px 80px;
     background-color: rgba(255, 255,255, 0.88);
 }
+.btnExam {
+    bottom: 80%;
+    right: 5%;
+    position: fixed;
+    z-index: 3000;
+}

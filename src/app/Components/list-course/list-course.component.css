@@ -1,5 +1,7 @@
 .BG{
-    background-image: url(http://i.imgur.com/SNWQeZ9.jpg);
-    width: 100%;
-    height: 100%;
+    background-image: url(http://i.imgur.com/SNWQeZ9.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }

@@ -4,3 +4,6 @@
    </div>
   </div>
 </div>
+<div class="btnExam" *ngIf="isAfterExamed">
+  <a [routerLink]="['/examAfter', CourseID]"><button class="btn btn-info ">ทำข้อสอบหลังเรียน</button></a>
+</div>
