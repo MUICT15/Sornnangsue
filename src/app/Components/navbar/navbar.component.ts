@@ -49,7 +49,6 @@ export class NavbarComponent implements OnInit {
           data.user.uid == 'kGixRYMcCuhcaHYTrYoiXvRPoN02'){
             this.adminNav = true;
             this.checkProfile();
-            //this.router.navigate(['/createCourse']);
        }else if(data.user.uid != '85XLsHmV4le60exsEGPiPcfs0if1' || 
                 data.user.uid != 'HhNpllilv4VvVg56tc9P9ozSg8s1' ||
                 data.user.uid != 'x57wY4d4CNcLTPzFe3fk4zi42b93' ||
@@ -96,8 +95,9 @@ export class NavbarComponent implements OnInit {
          UserID: localStorage.getItem('UID'),
          RealName: '',
          Grade: ''
+       }).then(()=>{
+         this.router.navigate(['/myProfile']);
        });
-       this.router.navigate(['/myProfile']);
      }else{
        this.router.navigate(['/listcourse']);
      }

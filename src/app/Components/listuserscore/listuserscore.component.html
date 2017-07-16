@@ -1,0 +1,49 @@
+<div class="container" style="margin-top: 10%">
+  <div class="row" *ngFor="let course of userCourse | async">
+    <a (click)="listScore(course.$key)">
+      <div class="col-sm-6 col-md-4 text-center w3-animate-right BG" 
+           data-toggle="modal"
+           data-target="#myModal">
+        <div class="thumbnail" style="margin-top:20px">
+          <img [src]="course.Image" style="width:98%; height:250px">
+          <div class="caption">
+            <h3>{{course.Topic}}</h3>
+            <p>{{course.Description}}</p>
+            <p></p>
+          </div>
+         </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title">คะแนนของคุณ</h2>
+      </div>
+      <div class="modal-body">
+        <div class=" container col-md-12">
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <h3>คะแนนก่อนเรียน</h3>
+            <div *ngFor="let score of beforeScore | async">
+              <h5>{{score.Score}}</h5>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <h3>คะแนนหลังเรียน</h3>
+            <div *ngFor="let score of afterScore | async">
+              <h5>{{score.Score}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br><br><br><br><br><br>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

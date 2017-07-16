@@ -9,6 +9,11 @@ import { EditCourseComponent } from './Components/edit-course/edit-course.compon
 import { AnsBeforeQuestionComponent } from './Components/ans-before-question/ans-before-question.component';
 import { AnsAfterQuestionComponent } from './Components/ans-after-question/ans-after-question.component';
 import { UserProfileComponent } from './Components/user-profile/user-profile.component';
+import { CreateSubContentComponent } from './Components/create-sub-content/create-sub-content.component';
+import { EditarticleComponent } from './Components/editarticle/editarticle.component';
+import { ListuserscoreComponent } from './Components/listuserscore/listuserscore.component';
+import { ListuserComponent } from './Components/listuser/listuser.component';
+import { ListadmincourseComponent } from './Components/listadmincourse/listadmincourse.component';
 
 export const route: Routes = [
     {path: '' , component: MainpageComponent},
@@ -19,6 +24,11 @@ export const route: Routes = [
     {path: 'listcourse',component: ListCourseComponent},
     {path: 'examBefore/:CourseID',component: AnsBeforeQuestionComponent},
     {path: 'examAfter/:CourseID', component: AnsAfterQuestionComponent},
-    {path: 'myProfile' , component: UserProfileComponent}
+    {path: 'myProfile' , component: UserProfileComponent},
+    {path: 'createArticle' , component: CreateSubContentComponent},
+    {path: 'editArticle' , component: EditarticleComponent},
+    {path: 'myScore' , component: ListuserscoreComponent},
+    {path: 'listAllCourse' , component: ListadmincourseComponent},
+    {path: 'listuser/:CourseID' , component: ListuserComponent}
     ];
 export const routing = RouterModule.forRoot(route);

@@ -23,6 +23,12 @@ import { ListCourseComponent } from './Components/list-course/list-course.compon
 import { AnsAfterQuestionComponent } from './Components/ans-after-question/ans-after-question.component';
 import { AnsBeforeQuestionComponent } from './Components/ans-before-question/ans-before-question.component';
 import { UserProfileComponent } from './Components/user-profile/user-profile.component';
+import { CreateSubContentComponent } from './Components/create-sub-content/create-sub-content.component';
+import { EditarticleComponent } from './Components/editarticle/editarticle.component';
+import { ListuserscoreComponent } from './Components/listuserscore/listuserscore.component';
+import { ListusercourseComponent } from './Components/listusercourse/listusercourse.component';
+import { ListuserComponent } from './Components/listuser/listuser.component';
+import { ListadmincourseComponent } from './Components/listadmincourse/listadmincourse.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +43,13 @@ import { UserProfileComponent } from './Components/user-profile/user-profile.com
     ListCourseComponent,
     AnsAfterQuestionComponent,
     AnsBeforeQuestionComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    CreateSubContentComponent,
+    EditarticleComponent,
+    ListuserscoreComponent,
+    ListusercourseComponent,
+    ListuserComponent,
+    ListadmincourseComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,13 @@
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-ans-after-question',
   templateUrl: './ans-after-question.component.html',
   styleUrls: ['./ans-after-question.component.css']
 })
-export class AnsAfterQuestionComponent implements OnInit {
+export class AnsAfterQuestionComponent {
   test: any;
   listQuestion: any[] = [];
   listAnsCorrect: String[] = [];
@@ -53,19 +53,16 @@ export class AnsAfterQuestionComponent implements OnInit {
       }
       this.userAnswered = true;
       this.ansBefore.list(`/UserExamed/After/${this.CourseID}`).push({
-        User: localStorage.getItem('UID')
+        User: localStorage.getItem('UID'),
+        Score: this.score
       }).then(()=>{
+        console.log('sss')
         setTimeout(()=>{
          this.redirect.navigate(['/listcourse']);
       },2000)
       }).catch((err)=>{
         console.log(err)
       });
-    }else if(this.listAnsCorrect.length != this.saveUserAnswers.length){
     }
-    
   }
-  ngOnInit() {
-  }
-
 }

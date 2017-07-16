@@ -1,0 +1,54 @@
+<div class="container" style="margin-top: 5%">
+  <h2>รายชื่อนักเรียน</h2>
+  <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+    <div class="table-responsive">          
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ชื่อ - นามสกุล</th>
+          <th>ระดับชั้น</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let user of users | async">
+          <tr data-toggle="modal"
+              data-target="#myModal"
+              (click)="listScore(user.UserID)">
+            <td>{{user.RealName}}</td>
+            <td>{{user.Grade}}</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title">คะแนนของคุณ</h2>
+      </div>
+      <div class="modal-body">
+        <div class=" container col-md-12">
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <h3>คะแนนก่อนเรียน</h3>
+            <div *ngFor="let score of before | async">
+              <h5>{{score.Score}}</h5>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <h3>คะแนนหลังเรียน</h3>
+            <div *ngFor="let score of after | async">
+              <h5>{{score.Score}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br><br><br><br><br><br>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

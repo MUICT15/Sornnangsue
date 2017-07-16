@@ -28,17 +28,6 @@ export class CourseContentComponent {
              route.navigate(['/examBefore',params.CourseID])
            }
       });
-      
-      Content.list(`/UserExamed/After/${params.CourseID}`,{
-        query:{
-          orderByChild: 'User',
-          equalTo: localStorage.getItem('UID')
-        }
-      }).subscribe((data)=>{
-         if(data.length > 0){
-           this.isAfterExamed = false;
-         }
-      })
     });
    }
 
@@ -50,5 +39,4 @@ export class CourseContentComponent {
        }
      })
    }
-
 }

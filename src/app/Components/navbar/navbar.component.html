@@ -16,6 +16,21 @@
           </a>
         </li>
         <li>
+          <a [routerLink]="['/listcourse']">
+            <h5>บทความ</h5>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/myScore']">
+            <h5>ดูคะแนน</h5>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/listAllCourse']">
+            <h5>ดูคะแนนทุกคน</h5>
+          </a>
+        </li>
+        <li>
           <a [routerLink]="['/createCourse']">
             <h5>สร้างบทเรียน</h5>
           </a>
@@ -42,6 +57,11 @@
             <h5>คอสเรียน</h5>
           </a>
         </li>
+        <li>
+          <a [routerLink]="['/myScore']">
+            <h5>ดูคะแนน</h5>
+          </a>
+        </li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <img class="img-circle " [src]="UserPhoto">
@@ -51,6 +71,9 @@
           <li>
             <a href="#" (click)="logout()">
               <span class="glyphicon glyphicon-log-in"></span> ออกจากระบบ
+            </a>
+            <a routerLink="/myProfile">
+              <span class="glyphicon glyphicon-log-in"></span> โปรไฟล์
             </a>
           </li>
          </ul>
