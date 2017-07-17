@@ -42,13 +42,14 @@ export class NavbarComponent implements OnInit {
    authFacebook(){
      this.Auth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider).then((data)=>{
        localStorage.setItem('UID',data.user.uid);
+       console.log(data)
        if(data.user.uid == '85XLsHmV4le60exsEGPiPcfs0if1' || 
           data.user.uid == 'HhNpllilv4VvVg56tc9P9ozSg8s1' ||
           data.user.uid == 'x57wY4d4CNcLTPzFe3fk4zi42b93' ||
           data.user.uid == 'y5nwEOEFp8UHuhtQQxZtFIq4eBF2' ||
           data.user.uid == 'kGixRYMcCuhcaHYTrYoiXvRPoN02'){
             this.adminNav = true;
-            this.checkProfile();
+            this.checkProfile(data.user.photoURL);
        }else if(data.user.uid != '85XLsHmV4le60exsEGPiPcfs0if1' || 
                 data.user.uid != 'HhNpllilv4VvVg56tc9P9ozSg8s1' ||
                 data.user.uid != 'x57wY4d4CNcLTPzFe3fk4zi42b93' ||
@@ -56,7 +57,7 @@ export class NavbarComponent implements OnInit {
                 data.user.uid != 'kGixRYMcCuhcaHYTrYoiXvRPoN02'){
                  
                  this.UserNav = true
-                 this.checkProfile();
+                 this.checkProfile(data.user.photoURL);
        }
      });
    }
@@ -70,20 +71,19 @@ export class NavbarComponent implements OnInit {
           data.user.uid == 'y5nwEOEFp8UHuhtQQxZtFIq4eBF2' ||
           data.user.uid == 'kGixRYMcCuhcaHYTrYoiXvRPoN02'){
            this.adminNav = true;
-           this.checkProfile();
-           //this.router.navigate(['/createCourse']);
+           this.checkProfile(data.user.photoURL);
        }else if(data.user.uid != '85XLsHmV4le60exsEGPiPcfs0if1' || 
                 data.user.uid != 'HhNpllilv4VvVg56tc9P9ozSg8s1' ||
                 data.user.uid != 'x57wY4d4CNcLTPzFe3fk4zi42b93' ||
                 data.user.uid != 'y5nwEOEFp8UHuhtQQxZtFIq4eBF2' ||
                 data.user.uid != 'kGixRYMcCuhcaHYTrYoiXvRPoN02'){
                  this.UserNav = true;
-                 this.checkProfile();
+                 this.checkProfile(data.user.photoURL);
        }
      });
    }
 
-   checkProfile(){
+   checkProfile(Image: String){
     this.profile.list('/UserProfile',{
      query:{
       orderByChild: 'UserID',
@@ -94,7 +94,8 @@ export class NavbarComponent implements OnInit {
        this.profile.list('UserProfile').push({
          UserID: localStorage.getItem('UID'),
          RealName: '',
-         Grade: ''
+         Grade: '',
+         Image: Image.toString()
        }).then(()=>{
          this.router.navigate(['/myProfile']);
        });
@@ -107,6 +108,7 @@ export class NavbarComponent implements OnInit {
    logout(){
      this.Auth.auth.signOut();
      localStorage.removeItem('UID');
+     this.router.navigate(['/']);
    }
 
   ngOnInit() {
